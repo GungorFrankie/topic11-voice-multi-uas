@@ -1,0 +1,40 @@
+{
+  "mission_id": "v1",
+  "reasoning": "cf233 is idle, above the battery limit and nearest to depot_a (cf232 is as near but has only 22% battery).",
+  "tasks": [
+    {
+      "id": "t1",
+      "uas": "cf233",
+      "action": "takeoff"
+    },
+    {
+      "id": "t2",
+      "uas": "cf233",
+      "action": "goto",
+      "target": "depot_a"
+    },
+    {
+      "id": "t3",
+      "uas": "cf233",
+      "action": "pickup",
+      "parcel": "p1"
+    },
+    {
+      "id": "t4",
+      "uas": "cf233",
+      "action": "goto",
+      "target": "hospital"
+    },
+    {
+      "id": "t5",
+      "uas": "cf233",
+      "action": "dropoff",
+      "parcel": "p1"
+    },
+    {
+      "id": "t6",
+      "uas": "cf233",
+      "action": "land"
+    }
+  ]
+}

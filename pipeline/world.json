@@ -1,0 +1,139 @@
+{
+  "_comment": "World model for Topic 11, Task 2. Drone start positions are the ones reported by the simulator on 15 Nov 2026. Places, parcels, battery levels and limits are OUR test values (the simulator has no battery drain, places or parcels).",
+  "limits": {
+    "min_battery_pct": 30,
+    "default_altitude_m": 0.5
+  },
+  "uas": [
+    {
+      "id": "cf231",
+      "status": "idle",
+      "battery_pct": 86,
+      "payload_limit_g": 15,
+      "position": {
+        "x": 0.5,
+        "y": 1.0,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf232",
+      "status": "idle",
+      "battery_pct": 22,
+      "payload_limit_g": 15,
+      "position": {
+        "x": -0.5,
+        "y": 1.0,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf233",
+      "status": "idle",
+      "battery_pct": 74,
+      "payload_limit_g": 15,
+      "position": {
+        "x": -1.0,
+        "y": 0.5,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf234",
+      "status": "idle",
+      "battery_pct": 91,
+      "payload_limit_g": 15,
+      "position": {
+        "x": -1.0,
+        "y": -0.5,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf235",
+      "status": "idle",
+      "battery_pct": 65,
+      "payload_limit_g": 15,
+      "position": {
+        "x": -0.5,
+        "y": -1.0,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf236",
+      "status": "idle",
+      "battery_pct": 58,
+      "payload_limit_g": 15,
+      "position": {
+        "x": 0.5,
+        "y": -1.0,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf237",
+      "status": "idle",
+      "battery_pct": 80,
+      "payload_limit_g": 15,
+      "position": {
+        "x": 1.0,
+        "y": -0.5,
+        "z": 0.0
+      }
+    },
+    {
+      "id": "cf238",
+      "status": "idle",
+      "battery_pct": 47,
+      "payload_limit_g": 15,
+      "position": {
+        "x": 1.0,
+        "y": 0.5,
+        "z": 0.0
+      }
+    }
+  ],
+  "places": [
+    {
+      "name": "depot_a",
+      "x": -0.5,
+      "y": 0.5
+    },
+    {
+      "name": "depot_b",
+      "x": 0.5,
+      "y": 0.5
+    },
+    {
+      "name": "hospital",
+      "x": 0.5,
+      "y": -0.5
+    },
+    {
+      "name": "lab",
+      "x": -0.5,
+      "y": -0.5
+    }
+  ],
+  "parcels": [
+    {
+      "id": "p1",
+      "label": "blood sample",
+      "mass_g": 10,
+      "at": "depot_a"
+    },
+    {
+      "id": "p2",
+      "label": "medicine",
+      "mass_g": 12,
+      "at": "depot_b"
+    },
+    {
+      "id": "p3",
+      "label": "heavy box",
+      "mass_g": 30,
+      "at": "depot_a"
+    }
+  ]
+}

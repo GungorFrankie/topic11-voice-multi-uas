@@ -1,0 +1,46 @@
+{
+  "mission_id": "v4",
+  "tasks": [
+    {
+      "id": "t1",
+      "uas": "cf233",
+      "action": "takeoff",
+      "altitude_m": 0.8
+    },
+    {
+      "id": "t2",
+      "uas": "cf233",
+      "action": "goto",
+      "target": "depot_a"
+    },
+    {
+      "id": "t3",
+      "uas": "cf233",
+      "action": "pickup",
+      "parcel": "p1"
+    },
+    {
+      "id": "t4",
+      "uas": "cf233",
+      "action": "goto",
+      "target": "lab"
+    },
+    {
+      "id": "t7",
+      "uas": "cf233",
+      "action": "hold",
+      "duration_s": 5
+    },
+    {
+      "id": "t5",
+      "uas": "cf233",
+      "action": "dropoff",
+      "parcel": "p1"
+    },
+    {
+      "id": "t6",
+      "uas": "cf233",
+      "action": "land"
+    }
+  ]
+}

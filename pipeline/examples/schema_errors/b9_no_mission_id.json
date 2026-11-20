@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "uas": "cf231",
+      "action": "takeoff"
+    },
+    {
+      "id": "t2",
+      "uas": "cf231",
+      "action": "goto",
+      "target": "depot_a"
+    },
+    {
+      "id": "t3",
+      "uas": "cf231",
+      "action": "pickup",
+      "parcel": "p1"
+    },
+    {
+      "id": "t4",
+      "uas": "cf231",
+      "action": "goto",
+      "target": "hospital"
+    },
+    {
+      "id": "t5",
+      "uas": "cf231",
+      "action": "dropoff",
+      "parcel": "p1"
+    },
+    {
+      "id": "t6",
+      "uas": "cf231",
+      "action": "land"
+    }
+  ],
+  "_expect": "S2: 'mission_id' is required"
+}

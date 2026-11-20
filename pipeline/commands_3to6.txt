@@ -1,0 +1,5 @@
+# Requests 3-6 only: rerun after changing the place feedback (validators v2, 15 Nov 2026)
+At the same time, take the blood sample to the lab and the medicine to the hospital. || p1>lab & p2>hospital
+Deliver the heavy box to the hospital. || refuse
+Take the medicine to the warehouse. || refuse
+Use drone cf232 to bring the medicine to the lab. || refuse or p2>lab

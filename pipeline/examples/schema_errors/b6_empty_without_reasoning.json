@@ -1,0 +1,5 @@
+{
+  "mission_id": "b",
+  "tasks": [],
+  "_expect": "S2: an empty task list needs 'reasoning'"
+}

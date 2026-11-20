@@ -1,0 +1,13 @@
+{"mission_id":"cross","tasks":[
+{"id":"t1","uas":"cf233","action":"takeoff"},
+{"id":"t2","uas":"cf233","action":"goto","target":"depot_a"},
+{"id":"t3","uas":"cf233","action":"pickup","parcel":"p1"},
+{"id":"t4","uas":"cf233","action":"goto","target":"hospital"},
+{"id":"t5","uas":"cf233","action":"dropoff","parcel":"p1"},
+{"id":"t6","uas":"cf233","action":"land"},
+{"id":"t7","uas":"cf238","action":"takeoff"},
+{"id":"t8","uas":"cf238","action":"goto","target":"depot_b"},
+{"id":"t9","uas":"cf238","action":"pickup","parcel":"p2"},
+{"id":"t10","uas":"cf238","action":"goto","target":"lab"},
+{"id":"t11","uas":"cf238","action":"dropoff","parcel":"p2"},
+{"id":"t12","uas":"cf238","action":"land"}]}

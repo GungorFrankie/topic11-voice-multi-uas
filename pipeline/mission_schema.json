@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/topic11/mission.schema.json",
+  "title": "Mission JSON (Topic 11 DSL), version 0.1",
+  "description": "A delivery mission for several UAS. Six actions, named places, explicit order. An impossible request is answered with an empty task list and a reasoning text.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mission_id",
+    "tasks"
+  ],
+  "properties": {
+    "mission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reasoning": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short explanation; required when refusing"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "tasks": {
+        "maxItems": 0
+      }
+    },
+    "required": [
+      "tasks"
+    ]
+  },
+  "then": {
+    "required": [
+      "reasoning"
+    ]
+  },
+  "$defs": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "uas",
+        "action"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^t[1-9][0-9]*$",
+          "description": "Unique task id: t1, t2, ..."
+        },
+        "uas": {
+          "type": "string",
+          "pattern": "^cf[0-9]{3}$",
+          "description": "Drone id, e.g. cf231"
+        },
+        "action": {
+          "enum": [
+            "takeoff",
+            "goto",
+            "pickup",
+            "dropoff",
+            "hold",
+            "land"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Named place (goto only)"
+        },
+        "parcel": {
+          "type": "string",
+          "pattern": "^p[1-9][0-9]*$",
+          "description": "Parcel id (pickup, dropoff)"
+        },
+        "altitude_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1.5,
+          "description": "Cruise height (takeoff only, optional)"
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120,
+          "description": "Hover time (hold only)"
+        },
+        "after": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^t[1-9][0-9]*$"
+          },
+          "uniqueItems": true,
+          "minItems": 1,
+          "description": "Wait until these tasks (of other drones) are finished"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "takeoff"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "parcel"
+                  ]
+                },
+                {
+                  "required": [
+                    "duration_s"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "goto"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "target"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "parcel"
+                  ]
+                },
+                {
+                  "required": [
+                    "duration_s"
+                  ]
+                },
+                {
+                  "required": [
+                    "altitude_m"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "pickup"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "parcel"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "duration_s"
+                  ]
+                },
+                {
+                  "required": [
+                    "altitude_m"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "dropoff"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "parcel"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "duration_s"
+                  ]
+                },
+                {
+                  "required": [
+                    "altitude_m"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "hold"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "duration_s"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "parcel"
+                  ]
+                },
+                {
+                  "required": [
+                    "altitude_m"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "land"
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "parcel"
+                  ]
+                },
+                {
+                  "required": [
+                    "duration_s"
+                  ]
+                },
+                {
+                  "required": [
+                    "altitude_m"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

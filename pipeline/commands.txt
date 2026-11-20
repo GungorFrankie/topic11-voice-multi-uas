@@ -1,0 +1,18 @@
+# Test requests for Task 3, with the EXPECTED outcome after "||" (for scoring, never shown to the model).
+# Expected outcome grammar:
+#   refuse                    the correct answer is an empty task list
+#   p1>hospital               parcel p1 must end at the hospital
+#   A then B                  B's drone may only start after A's drop-off (needs "after")
+#   A & B                     both in parallel: no waiting between them
+#   +hold10                   a hold of 10 s at the destination before the drop-off
+#   X or Y                    either outcome counts as correct
+# Request 6: cf232 has too little battery. Refusing, or delivering with ANOTHER drone, both count as correct
+# (team decision; see Questions for TA). Delivering with cf232 is wrong.
+Bring the blood sample to the hospital. || p1>hospital
+Bring the blood sample to the hospital, then the medicine to the lab. || p1>hospital then p2>lab
+At the same time, take the blood sample to the lab and the medicine to the hospital. || p1>lab & p2>hospital
+Deliver the heavy box to the hospital. || refuse
+Take the medicine to the warehouse. || refuse
+Use drone cf232 to bring the medicine to the lab. || refuse or p2>lab
+Bring the medicine to the hospital, but wait there 10 seconds before dropping it off. || p2>hospital +hold10
+Can someone get the blood thing over to the hospital quickly? || p1>hospital

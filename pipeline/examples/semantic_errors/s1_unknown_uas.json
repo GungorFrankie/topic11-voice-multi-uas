@@ -1,0 +1,40 @@
+{
+  "mission_id": "s",
+  "tasks": [
+    {
+      "id": "t1",
+      "uas": "cf239",
+      "action": "takeoff"
+    },
+    {
+      "id": "t2",
+      "uas": "cf239",
+      "action": "goto",
+      "target": "depot_a"
+    },
+    {
+      "id": "t3",
+      "uas": "cf239",
+      "action": "pickup",
+      "parcel": "p1"
+    },
+    {
+      "id": "t4",
+      "uas": "cf239",
+      "action": "goto",
+      "target": "hospital"
+    },
+    {
+      "id": "t5",
+      "uas": "cf239",
+      "action": "dropoff",
+      "parcel": "p1"
+    },
+    {
+      "id": "t6",
+      "uas": "cf239",
+      "action": "land"
+    }
+  ],
+  "_expect": "A1: cf239 does not exist"
+}
